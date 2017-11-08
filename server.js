@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const path = require('path')
 const http = require('http')
+const proxy = require('http-proxy-middleware')
 
 const app = express()
 const api = require('./server/routes/api')
@@ -21,11 +22,19 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/api', api)
 app.use(loadCookie(app))
-app.use(express.static(path.join(__dirname, 'dist')))
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'))
-})
+if (app.get('env') !== 'production') {
+  app.use('/', proxy({
+    changeOrigin: true,
+    target: 'http://localhost:4200'
+  }))
+} else {
+  app.use(express.static(path.join(__dirname, 'dist')))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'))
+  })
+}
 
 
 const server = http.createServer(app)
