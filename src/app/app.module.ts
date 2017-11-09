@@ -4,7 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from '../home.component';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+
+import { AppClickedEvent } from './serevices/app-clicked-event';
 
 const appRoutes: Routes = [
   {
@@ -17,17 +20,14 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(
-      appRoutes: {
-        enableTracing: true
-      }
-    )
+    RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [AppClickedEvent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

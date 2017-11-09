@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('assets/fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('assets/fonts/FiraSans-Regular.ttf');
+}
+
+* { font-family: 'Open Sans', sans-serif; }
+
+body {
+  font-size: 12px;
+  background-color: $bg;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.6em; }
+h4 { font-size: 1.4em; }
+h5 { font-size: 1.2em; }
+h6 { font-size: 1em; }
+
+a, a:visited { color: $linkColor; }
+a:hover, a:active, a:focus { color: $hoverLinkColor; }
+
+.context { background-color: $bg; }
+
+.block {
+  @extend .context;
+  padding: 10px;
+  border: 1px solid $border;
+}
+
+.group:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: "";
+  clear: both;
+  height: 0;
+}
+
+* html .group { zoom: 1; } /* IE6 */
+*:first-child+html .group { zoom: 1; } /* IE7 */

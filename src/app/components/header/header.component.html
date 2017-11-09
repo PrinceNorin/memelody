@@ -1,0 +1,34 @@
+<header class="header">
+  <div class="header-top group">
+    <div class="lang-selector">
+      <button (click)="toggleLangs($event)">{{currentLang}}</button>
+      <ul [class.open]="isLangOpen">
+        <li *ngFor="let lang of langs">
+          <a [href]="lang.value">{{lang.text}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="navbar group">
+    <ul class="nav nav-left">
+      <li>
+        <a routerLink="/" routerLinkActive="active">MeMelody</a>
+      </li>
+      <li>
+        <a routerLink="/songs" routerLinkActive="active">Songs</a>
+      </li>
+    </ul>
+    <ul class="nav nav-right">
+      <li class="nav-input">
+        <input type="text" placeholder="Searching...">
+        <button>Search</button>
+      </li>
+      <li>
+        <a href="/sign_in" routerLinkActive="active">Sign in</a>
+      </li>
+      <li>
+        <a href="/sign_up" routerLinkActive="active">Sign up</a>
+      </li>
+    </ul>
+  </div>
+</header>

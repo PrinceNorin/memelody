@@ -1,0 +1,99 @@
+@import "../../../assets/scss/variables";
+
+.header {
+  padding-top: 0;
+  margin-bottom: 30px;
+  border-bottom: 2px solid $purple;
+}
+
+.navbar { padding: 5px 10px; }
+
+.lang-selector {
+  float: right;
+  font-size: .9em;
+  position: relative;
+  button {
+    outline: none;
+    cursor: pointer;
+    padding: 5px 7px;
+    background-color: $bg;
+    border: 1px solid $border;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    &:hover { background-color: $bgHover; }
+  }
+  ul {
+    z-index: 9999;
+    right: 0;
+    margin-top: 2px;
+    position: absolute;
+    border: 1px solid $border;
+    background-color: $bg;
+    box-shadow: 0 0 3px $border;
+    display: none;
+    &.open { display: block; }
+    li {
+      border-bottom: 1px solid $border;
+      a {
+        padding: 7px 15px;
+        color: $text;
+        display: block;
+      }
+      &:last-child { border-bottom: none; }
+      &:hover { background-color: $bgHover; }
+    }
+  }
+}
+
+.nav {
+  > li > a {
+    font-size: 1.05em;
+    font-family: "Fira Sans";
+  }
+  li {
+    padding: 10px 5px;
+    display: inline-block;
+    a {
+      color: $text;
+      display: block;
+      &:hover { color: $textHover; }
+    }
+  }
+}
+
+.nav-left { float: left; }
+
+.nav-right {
+  float: right;
+  li.nav-input {
+    padding: 0 5px;
+    input {
+      outline: none;
+      width: 192px;
+      padding: 0 3px;
+      height: 26px;
+      font-size: 0.9em;
+      box-sizing: border-box;
+      border: 1px solid $border;
+      border-right: none;
+      margin-right: -5px;
+      border-radius: 3px 0 0 3px;
+    }
+    button {
+      border: none;
+      cursor: pointer;
+      width: 26px;
+      height: 26px;
+      font-size: 0.9em;
+      padding: 0;
+      text-indent: -99999px;
+      background-repeat: no-repeat;
+      box-sizing: border-box;
+      background-position: 0 0;
+      background-size: 26px 77px;
+      border-radius: 0 3px 3px 0;
+      background-image: url('../../../assets/images/btn_search.png');
+      &:hover { background-position: 0 -51px; }
+    }
+  }
+}
